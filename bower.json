@@ -1,0 +1,18 @@
+{
+  "name": "clickableParent",
+  "version": "0.0.1",
+  "main": "jquery.clickable_parent.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/dennis-best/jquery-clickable",
+  "authors": [
+    "Dennis Best <dennis.best@me.com>"
+  ],
+  "description": "Makes an element clickable based on the first interior anchor tag.",
+  "license": "MIT"
+}
