@@ -1,10 +1,10 @@
-# Plugin Clickable
+# Plugin clickableParent
 # Makes an element clickable based on the first interior anchor tag
 # By Dennis Best 2014
 
 
 $ = jQuery
-$.fn.clickable = ->
+$.fn.clickableParent = ->
   @click (event) ->
     if event.target.nodeName is "A"
       console.log "Anchor"
