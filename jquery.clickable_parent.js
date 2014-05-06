@@ -1,8 +1,3 @@
-// Plugin clickableParent
-// Makes an element clickable based on the first interior anchor tag
-// By Dennis Best 2014
-
-
 var $;
 
 $ = jQuery;
@@ -12,7 +7,9 @@ $.fn.clickableParent = function() {
     if (event.target.nodeName === "A") {
       return console.log("Anchor");
     } else {
-      return window.location = $(this).find("a").attr("href");
+      if ($(event.target).is(this)) {
+        return window.location = $(this).find("a").attr("href");
+      }
     }
   });
 };

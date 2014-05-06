@@ -9,5 +9,6 @@ $.fn.clickableParent = ->
     if event.target.nodeName is "A"
       console.log "Anchor"
     else
-      window.location = $(this).find("a").attr("href")
+      if $(event.target).is(this)
+        window.location = $(this).find("a").attr("href")
 
