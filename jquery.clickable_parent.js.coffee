@@ -6,9 +6,13 @@
 $ = jQuery
 $.fn.clickableParent = ->
   @click (event) ->
-    if event.target.nodeName is "A"
-      console.log "Anchor"
-    else
+    unless event.target.nodeName is "A"
       if $(event.target).is(this)
-        window.location = $(this).find("a").attr("href")
+        window.location = $('a', $(this)).attr("href")
+
+$.fn.clickableParentTL = ->
+  @click (event) ->
+    unless event.target.nodeName is "A"
+      if $(event.target).is(this)
+        Turbolinks.visit $('a', $(this)).attr('href')
 
