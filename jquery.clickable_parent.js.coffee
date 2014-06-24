@@ -4,15 +4,14 @@
 
 
 $ = jQuery
-$.fn.clickableParent = ->
-  @click (event) ->
-    unless event.target.nodeName is "A"
-      if $(event.target).is(this)
-        window.location = $('a', $(this)).attr("href")
+$.fn.clickableParent = (options={}) ->
+  turbolinks = if options.turbolinks? and options.turbolinks then true else false
 
-$.fn.clickableParentTL = ->
   @click (event) ->
     unless event.target.nodeName is "A"
       if $(event.target).is(this)
-        Turbolinks.visit $('a', $(this)).attr('href')
+        if turbolinks
+          Turbolinks.visit $('a', $(this)).attr('href')
+        else
+          window.location = $('a', $(this)).attr("href")
 

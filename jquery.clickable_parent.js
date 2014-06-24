@@ -1,18 +1,17 @@
-jQuery.fn.clickableParent = function() {
+jQuery.fn.clickableParent = function(options) {
+  var turbolinks;
+  if (options == null) {
+    options = {};
+  }
+  turbolinks = (options.turbolinks != null) && options.turbolinks ? true : false;
   return this.click(function(event) {
     if (event.target.nodeName !== "A") {
       if ($(event.target).is(this)) {
-        return window.location = $('a', $(this)).attr("href");
-      }
-    }
-  });
-};
-
-jQuery.fn.clickableParentTL = function() {
-  return this.click(function(event) {
-    if (event.target.nodeName !== "A") {
-      if ($(event.target).is(this)) {
-        return Turbolinks.visit($('a', $(this)).attr('href'));
+        if (turbolinks) {
+          return Turbolinks.visit($('a', $(this)).attr('href'));
+        } else {
+          return window.location = $('a', $(this)).attr("href");
+        }
       }
     }
   });
